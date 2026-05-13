@@ -1,0 +1,67 @@
+[project]
+name = "fallbackrabbit"
+version = "0.1.0"
+description = "Auto-generate and test fallback/middleware chains for LLM-powered apps"
+readme = "README.md"
+license = "MIT"
+requires-python = ">=3.11"
+authors = [{name = "Mela AI"}]
+keywords = ["llm", "fallback", "chain", "routing", "openai", "anthropic", "ai"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+]
+dependencies = [
+    "fastapi>=0.115",
+    "uvicorn>=0.34",
+    "pydantic>=2.7",
+    "click>=8.1",
+    "httpx>=0.28",
+    "rich>=14.0",
+    "pyyaml>=6.0",
+    "jinja2>=3.1",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.3",
+    "pytest-asyncio>=0.24",
+    "ruff>=0.11",
+]
+
+[project.scripts]
+fallbackrabbit = "fallbackrabbit.cli:cli"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.ruff]
+target-version = "py311"
+line-length = 100
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "N", "UP", "B", "SIM"]
+
+[tool.ruff.lint.per-file-ignores]
+"fallbackrabbit/dashboard.py" = ["E501"]
+"fallbackrabbit/server.py" = ["F841"]
+"tests/test_websocket.py" = ["F841"]
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+testpaths = ["tests"]
+filterwarnings = [
+    "ignore::pytest.PytestCollectionWarning",
+]
+
+[dependency-groups]
+dev = [
+    "mypy>=2.1.0",
+    "pytest-cov>=7.1.0",
+]

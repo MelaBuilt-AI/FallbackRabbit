@@ -1,0 +1,15 @@
+outages:
+  - provider_name: GPT-4o
+    error_type: rate_limit
+    duration_seconds: 60
+    probability: 0.8
+
+  - provider_name: Claude Sonnet
+    error_type: timeout
+    duration_seconds: 120
+    probability: 0.5
+
+  - provider_name: Local Llama
+    error_type: connection_error
+    duration_seconds: 300
+    probability: 1.0
