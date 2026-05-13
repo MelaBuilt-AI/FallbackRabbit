@@ -18,3 +18,4 @@ htmlcov/
 .env
 .env.local
 .github-token
+site/

@@ -1,0 +1,71 @@
+site_name: FallbackRabbit
+site_description: Auto-generate and test fallback/middleware chains for LLM-powered apps
+site_url: https://fallbackrabbit.melabuilt.ai
+repo_url: https://github.com/MelaBuilt-AI/FallbackRabbit
+repo_name: MelaBuilt-AI/FallbackRabbit
+
+theme:
+  name: material
+  palette:
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: deep purple
+      accent: purple
+      toggle:
+        icon: material/weather-sunny
+        name: Switch to light mode
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: deep purple
+      accent: purple
+      toggle:
+        icon: material/weather-night
+        name: Switch to dark mode
+  font:
+    text: Inter
+    code: JetBrains Mono
+  features:
+    - navigation.tabs
+    - navigation.sections
+    - navigation.expand
+    - search.suggest
+    - search.highlight
+    - content.code.copy
+    - content.code.annotate
+
+nav:
+  - Home: index.md
+  - Getting Started:
+    - Installation: installation.md
+    - Quick Start: quickstart.md
+    - CLI Reference: cli.md
+  - Guides:
+    - Chain Configuration: chains.md
+    - Fallback Rules: rules.md
+    - Simulating Outages: simulation.md
+    - Export Formats: export.md
+    - Real Provider Calls: providers.md
+  - API & Dashboard:
+    - REST API: api.md
+    - Web Dashboard: dashboard.md
+    - WebSocket Events: websocket.md
+  - Operations:
+    - Authentication: auth.md
+    - Rate Limiting: ratelimit.md
+    - Persistent Storage: storage.md
+    - Custom Templates: templates.md
+  - Reference:
+    - Configuration Reference: config-reference.md
+    - Changelog: changelog.md
+
+markdown_extensions:
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.superfences
+  - admonition
+  - attr_list
+  - md_in_html
+  - toc:
+      permalink: true
