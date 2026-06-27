@@ -19,3 +19,23 @@ htmlcov/
 .env.local
 .github-token
 site/
+
+# Local data
+data/
+*.db
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Deployment artifacts (keep deploy/ tracked)
+node_modules/deploy/docs/
+!deploy/README.md
+!deploy/index.html
+site/

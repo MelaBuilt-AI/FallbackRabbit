@@ -86,7 +86,8 @@ SAMPLE_ANTHROPIC_RESPONSE = {
 class TestLoadProviderConfig:
     """Tests for load_provider_config."""
 
-    def test_load_openai_defaults(self):
+    def test_load_openai_defaults(self, monkeypatch):
+        monkeypatch.delenv("OPENAI_API_KEY", raising=False)
         cfg = load_provider_config("openai")
         assert cfg.provider_type == "openai"
         assert cfg.base_url == "https://api.openai.com/v1"
@@ -94,13 +95,15 @@ class TestLoadProviderConfig:
         assert cfg.timeout == 30.0
         assert cfg.default_model == "gpt-4o"
 
-    def test_load_anthropic_defaults(self):
+    def test_load_anthropic_defaults(self, monkeypatch):
+        monkeypatch.delenv("ANTHROPIC_API_KEY", raising=False)
         cfg = load_provider_config("anthropic")
         assert cfg.provider_type == "anthropic"
         assert cfg.base_url == "https://api.anthropic.com"
         assert cfg.default_model == "claude-sonnet-4-20250514"
 
-    def test_load_ollama_defaults(self):
+    def test_load_ollama_defaults(self, monkeypatch):
+        monkeypatch.delenv("OLLAMA_API_KEY", raising=False)
         cfg = load_provider_config("ollama")
         assert cfg.provider_type == "ollama"
         assert cfg.base_url == "http://localhost:11434"

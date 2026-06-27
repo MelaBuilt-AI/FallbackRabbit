@@ -42,4 +42,17 @@
 
 ## 🎯 MVP Complete!
 
-FallbackRabbit v0.1.0 is feature-complete and ready for PyPI publishing.
+FallbackRabbit v0.1.0 is feature-complete.
+
+## 🚀 PyPI Publishing — BLOCKED
+
+- [ ] **PyPI publish** — Package name `fallbackrabbit` is **available** (404 on PyPI JSON API). Build artifacts exist and pass `twine check`.
+- **Blocker: No PyPI credentials found.** Need one of:
+  1. PyPI API token → set as `TWINE_PASSWORD` env var or in `~/.pypirc`
+  2. Trusted publisher (OIDC) via GitHub Actions
+- **Steps once credentials available:**
+  1. `cd /home/mela_ai/.openclaw/workspace/fallback-rabbit && twine upload dist/*`
+  2. Verify at `https://pypi.org/project/fallbackrabbit/`
+- Dist artifacts (built 2025-05-13):
+  - `dist/fallbackrabbit-0.1.0-py3-none-any.whl` (55 KB)
+  - `dist/fallbackrabbit-0.1.0.tar.gz` (149 KB)

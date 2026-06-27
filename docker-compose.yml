@@ -1,0 +1,22 @@
+services:
+  fallbackrabbit:
+    build: .
+    image: fallbackrabbit:latest
+    container_name: fallbackrabbit
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./data:/app/data
+    environment:
+      - FALLBACKRABBIT_HOST=0.0.0.0
+      - FALLBACKRABBIT_PORT=8000
+      - FALLBACKRABBIT_STORAGE_URL=sqlite:////app/data/chains.db
+      # Set FALLBACKRABBIT_API_KEYS=key1,key2 to enable auth
+      # Set FALLBACKRABBIT_RATE_LIMIT_RPM=60 to enable rate limiting
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:8000/health')"]
+      interval: 30s
+      timeout: 5s
+      start_period: 10s
+      retries: 3

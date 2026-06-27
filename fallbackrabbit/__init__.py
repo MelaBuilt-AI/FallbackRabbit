@@ -2,6 +2,20 @@
 
 __version__ = "0.1.0"
 
+from .chain_builder import (
+    apply_fallback_rules,
+    build_routing_chain,
+    generate_chain_summary,
+    optimize_chain_order,
+    validate_chain,
+)
+from .config_export import (
+    export_custom,
+    export_haystack,
+    export_langchain,
+    export_litellm,
+    export_openrouter,
+)
 from .models import (
     Chain,
     ChainReport,
@@ -14,21 +28,7 @@ from .models import (
     Provider,
     SimulatedOutage,
 )
-from .chain_builder import (
-    apply_fallback_rules,
-    build_routing_chain,
-    generate_chain_summary,
-    optimize_chain_order,
-    validate_chain,
-)
 from .simulator import Simulator, generate_test_prompts
-from .config_export import (
-    export_custom,
-    export_haystack,
-    export_langchain,
-    export_litellm,
-    export_openrouter,
-)
 
 __all__ = [
     # Version
