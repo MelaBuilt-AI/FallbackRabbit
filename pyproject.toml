@@ -68,4 +68,5 @@ filterwarnings = [
 dev = [
     "mypy>=2.1.0",
     "pytest-cov>=7.1.0",
+    "ruff>=0.11",
 ]
