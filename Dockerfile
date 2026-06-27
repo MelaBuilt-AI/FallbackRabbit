@@ -16,7 +16,7 @@ RUN uv sync --frozen --no-dev
 COPY fallbackrabbit/ ./fallbackrabbit/
 
 # Build wheel
-RUN uv run python -m build --wheel
+RUN uv build --wheel
 
 # ──────────────────────────────────────────────
 # Runtime stage
