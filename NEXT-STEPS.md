@@ -6,53 +6,48 @@
 - [x] **pyproject.toml** — project config with all deps
 - [x] **Tests directory** — `tests/__init__.py`, `test_models.py`, `test_chain_schema.py`, `test_cli.py`
 - [x] **.gitignore** — Python project ignores
-- [x] **Core data models (models.py)** — Provider, FallbackRule, Chain, PromptSpec, PromptResult, ChainReport, SimulatedOutage + enums (ErrorType, FallbackAction, ExportFormat)
+- [x] **Core data models (models.py)** — Provider, FallbackRule, Chain, PromptSpec, PromptResult, ChainReport, SimulatedOutage + enums
 - [x] **Chain schema (chain_schema.py)** — `load_chain()` and `load_outage_scenario()` with validation
-- [x] **Example YAML configs** — `schemas/example_chain.yaml` (3-provider chain) and `schemas/example_outage.yaml`
+- [x] **Example YAML configs** — `schemas/example_chain.yaml` and `schemas/example_outage.yaml`
 - [x] **CLI bootstrapping (cli.py)** — `init`, `validate`, `test`, `export`, `serve` commands via Click
 - [x] **Chain builder (chain_builder.py)** — `build_routing_chain()`, `apply_fallback_rules()`, `validate_chain()`, `optimize_chain_order()`, `generate_chain_summary()`
-- [x] **Simulator (simulator.py)** — `Simulator` class with async `run_prompt()`, `run_batch()`, `inject_outage()`, latency profiles by model type, outage injection, fallback routing
-- [x] **Config export (config_export.py)** — `export_litellm()`, `export_openrouter()`, `export_custom()`, `export_langchain()`, `export_haystack()` with file output support
-- [x] **CLI wired up** — `test` command runs simulation with rich table output, `export` command uses all export functions, `serve` starts FastAPI server
-- [x] **Real provider calls** — `fallbackrabbit/providers.py` with AsyncProviderClient supporting OpenAI, Anthropic, Azure, Ollama, and custom endpoints; `fallbackrabbit/config.py` for provider configuration from env vars; simulator.py updated with `use_real_calls` mode
-- [x] **Rich CLI output** — `fallbackrabbit/rich_display.py` with Rich tables, panels, progress bars, styled output; `cli.py` updated to use rich_display for all commands
-- [x] **FastAPI server** — REST API for chain CRUD, analysis, testing, and export (15 endpoints, 42 tests, `serve` CLI command)
-- [x] **Retry/failover timing** — PromptResult tracks `retries_used` and `total_wait_ms`; WAIT rules accumulate simulated wait time
-- [x] **Status code matching** — `condition_status_codes` in FallbackRule matched by simulator; `SimulatedOutage.status_code`; default status code mapping per error type; status-code-specific rules take priority
-- [x] **More export formats** — LangChain router config and Haystack pipeline config added; CLI and server export endpoints updated
-- [x] **CI pipeline** — GitHub Actions workflow for lint (ruff), type check (mypy), and test with coverage (pytest-cov) on Python 3.11 + 3.12
-
-## 🔜 Next Steps
-
-- [x] **Integration tests** — Full-stack workflows: create→test→export, import→validate→optimize, all-providers-down, cross-format consistency, file round-trips, apply-rules, server CRUD lifecycle, batch outage scenarios, status code matching; 33 tests
-- [x] **Custom template-based export** — Jinja2 template rendering with built-in templates (Terraform, Docker Compose, K8s ConfigMap, .env), inline templates, file templates, extra variables, CLI + server support; 33+11 tests
-- [x] **Persistent storage** — MemoryStorage + SqliteStorage backends with CRUD, `_ChainProxy` for backward compat, `create_app(storage_url=)` for config, thread-safe SQLite, 56 tests
-- [x] **API key authentication** — Static keys, middleware + dependency, X-API-Key header, Bearer token, query param, skip paths, env var loading, labeled keys, 36 tests
-- [x] **Rate limiting** — Token bucket, per-IP + global limits, burst, skip paths, X-RateLimit-* headers, Retry-After, cleanup, 28 tests
-- [x] **Web dashboard** — Dark-themed SPA at /dashboard, chain CRUD, test runner, export, WebSocket live progress, 26 tests
-- [x] **WebSocket support** — Real-time test progress via WebSocket, ConnectionManager, per-chain channels, event broadcasting, ProgressTracker, 34 tests
-
-## 📦 Packaging
-
-- [x] **Polish** — Lint cleanup (ruff all-pass), __init__.py public exports, type safety
-- [x] **README.md** — Full project docs (features, install, CLI, API, WebSocket, dashboard)
+- [x] **Simulator (simulator.py)** — `Simulator` class with async `run_prompt()`, `run_batch()`, `inject_outage()`, latency profiles, outage injection, fallback routing
+- [x] **Config export (config_export.py)** — `export_litellm()`, `export_openrouter()`, `export_custom()`, `export_langchain()`, `export_haystack()`
+- [x] **CLI wired up** — all commands functional with Rich output
+- [x] **Real provider calls** — `AsyncProviderClient` supporting OpenAI, Anthropic, Azure, Ollama, custom
+- [x] **Rich CLI output** — tables, panels, progress bars
+- [x] **FastAPI server** — 15 REST endpoints, WebSocket, dashboard
+- [x] **Retry/failover timing** — `retries_used`, `total_wait_ms`, WAIT rules
+- [x] **Status code matching** — `condition_status_codes` in FallbackRule
+- [x] **More export formats** — LangChain, Haystack, OpenRouter
+- [x] **CI pipeline** — GitHub Actions (lint, type check, test, coverage, Docker build)
+- [x] **Integration tests** — 33 tests covering full-stack workflows
+- [x] **Custom template-based export** — Jinja2 templates (Terraform, Docker, K8s, .env)
+- [x] **Persistent storage** — MemoryStorage + SqliteStorage
+- [x] **API key authentication** — Static keys, middleware, Bearer token, query param
+- [x] **Rate limiting** — Token bucket, per-IP + global, burst, headers
+- [x] **Web dashboard** — Dark-themed SPA with chain CRUD, test runner, export, WebSocket
+- [x] **WebSocket support** — Real-time progress, ConnectionManager, per-chain channels
+- [x] **Packaging** — Build verified (sdist + wheel), twine check pass
+- [x] **README.md** — Full docs with badges, Docker, examples, API reference
 - [x] **LICENSE** — MIT
 - [x] **CHANGELOG.md** — Version history
-- [x] **PyPI packaging** — pyproject.toml with metadata/classifiers/keywords, build verified (sdist + wheel)
+- [x] **Dockerfile** — Multi-stage build (slim), healthcheck
+- [x] **docker-compose.yml** — Self-hosting config
+- [x] **Examples directory** — 5 example scripts
+- [x] **CONTRIBUTING.md** — Development guide
+- [x] **CODE_OF_CONDUCT.md** — Contributor Covenant
+- [x] **SECURITY.md** — Vulnerability reporting
+- [x] **GitHub issue/PR templates** — Bug report, feature request, PR template
+- [x] **py.typed** — PEP 561 type info marker
+- [x] **.gitattributes** — Consistent line endings
+- [x] **Landing page** — Polished, open-source focused, no fake pricing
+- [x] **Deploy directory** — Cloudflare Pages ready (landing + docs)
+- [x] **wrangler.toml** — Cloudflare Pages config
+- [x] **GitHub repo public** — https://github.com/MelaBuilt-AI/FallbackRabbit
 
-## 🎯 MVP Complete!
+## 📋 Remaining
 
-FallbackRabbit v0.1.0 is feature-complete.
-
-## 🚀 PyPI Publishing — BLOCKED
-
-- [ ] **PyPI publish** — Package name `fallbackrabbit` is **available** (404 on PyPI JSON API). Build artifacts exist and pass `twine check`.
-- **Blocker: No PyPI credentials found.** Need one of:
-  1. PyPI API token → set as `TWINE_PASSWORD` env var or in `~/.pypirc`
-  2. Trusted publisher (OIDC) via GitHub Actions
-- **Steps once credentials available:**
-  1. `cd /home/mela_ai/.openclaw/workspace/fallback-rabbit && twine upload dist/*`
-  2. Verify at `https://pypi.org/project/fallbackrabbit/`
-- Dist artifacts (built 2025-05-13):
-  - `dist/fallbackrabbit-0.1.0-py3-none-any.whl` (55 KB)
-  - `dist/fallbackrabbit-0.1.0.tar.gz` (149 KB)
+- [ ] **PyPI publish** — Package name `fallbackrabbit` available. Need PyPI API token or GitHub Actions OIDC.
+- [ ] **Cloudflare Pages deploy** — Connect repo, set custom domain `fallbackrabbit.melabuilt.ai`
+- [ ] **OG image** — Social sharing image for landing page
