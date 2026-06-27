@@ -48,6 +48,9 @@
 
 ## 📋 Remaining
 
-- [ ] **PyPI publish** — Package name `fallbackrabbit` available. Need PyPI API token or GitHub Actions OIDC.
-- [ ] **Cloudflare Pages deploy** — Connect repo, set custom domain `fallbackrabbit.melabuilt.ai`
+- [x] **PyPI publish** — ✅ Live at https://pypi.org/project/fallbackrabbit/0.1.0/
+- [x] **Cloudflare Pages deploy** — ✅ Live at fallbackrabbit.melabuilt.ai
+- [x] **GitHub repo public** — https://github.com/MelaBuilt-AI/FallbackRabbit
+- [x] **PyPI publish workflow** — .github/workflows/publish.yml (needs PYPI_API_TOKEN secret)
 - [ ] **OG image** — Social sharing image for landing page
+- [ ] **GitHub repo secret** — Add PYPI_API_TOKEN to repo settings for auto-publish workflow
