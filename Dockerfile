@@ -7,14 +7,13 @@ WORKDIR /app
 COPY --from=ghcr.io/astral-sh/uv:latest /uv /usr/local/bin/uv
 
 # Copy project files
-COPY pyproject.toml uv.lock ./
+COPY pyproject.toml uv.lock README.md LICENSE ./
 
 # Install dependencies
 RUN uv sync --frozen --no-dev
 
 # Copy source
 COPY fallbackrabbit/ ./fallbackrabbit/
-COPY README.md LICENSE ./
 
 # Build wheel
 RUN uv run python -m build --wheel
