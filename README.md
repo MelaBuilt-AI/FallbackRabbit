@@ -3,6 +3,7 @@
 **Auto-generate, test, and optimize LLM fallback chains.**
 
 [![CI](https://github.com/MelaBuilt-AI/FallbackRabbit/actions/workflows/ci.yml/badge.svg)](https://github.com/MelaBuilt-AI/FallbackRabbit/actions/workflows/ci.yml)
+[![PyPI](https://img.shields.io/pypi/v/fallbackrabbit.svg)](https://pypi.org/project/fallbackrabbit/)
 [![Python 3.11+](https://img.shields.io/badge/python-3.11+-blue.svg)](https://www.python.org/downloads/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Tests: 556](https://img.shields.io/badge/tests-556-brightgreen.svg)](#)
